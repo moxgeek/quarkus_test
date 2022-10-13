@@ -1,0 +1,59 @@
+
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "ix.smart.grpc";
+
+package SmartGrpcService;
+
+service SmartGrpcService {
+  rpc addNewModel (SmartModelRequest) returns (SmartModelResponse) {}
+  rpc addNewFeature (SmartFeatureResponse) returns (SmartFeatureRequest) {}
+  rpc addDemoData (Empty) returns (Empty) {}
+}
+
+enum Category {
+  DEVICE = 0;
+  SERVICE = 1;
+}
+
+message SmartModelRequest {
+  string name = 1;
+  string description = 2;
+  Category category = 3;;
+  string identifier = 4;
+  string deviceBrandName = 5;
+  string serviceUrl = 6;
+  string serviceProtocol = 7;
+}
+
+message SmartModelResponse {
+  int32 id = 4;
+  string name = 1;
+  string description = 2;
+  Category category = 3;
+  string identifier = 5;
+  string deviceBrandName = 6;
+  string serviceUrl = 7;
+  string serviceProtocol = 8;
+
+}
+
+
+message SmartFeatureRequest {
+  string name = 1;
+  string description = 2;
+  string identifier = 3;
+}
+
+
+message SmartFeatureResponse {
+  int32 id = 4;
+  string name = 1;
+  string description = 2;
+  string identifier = 3;
+
+}
+
+message Empty{
+  string message = 1;
+}
